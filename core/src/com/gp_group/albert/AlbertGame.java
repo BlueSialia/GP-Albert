@@ -1,27 +1,39 @@
 package com.gp_group.albert;
 
-import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.Screen;
+import com.gp_group.albert.core.output.screens.fillthegaps_screen.FillTheGapsScreen;
+import com.gp_group.albert.core.output.screens.letris_screen.LetrisScreen;
+import com.gp_group.albert.core.output.screens.main_splash.MainSplash;
 
-public class AlbertGame extends ApplicationAdapter {
-    SpriteBatch batch;
-    Texture img;
+/**
+ * @author bluesialia
+ *         Date: 4/02/15
+ */
+public class AlbertGame extends Game {
+    final Screen splash = new MainSplash();
+    final Screen letris = new LetrisScreen();
+    final Screen fillthegaps = new FillTheGapsScreen();
 
     @Override
     public void create() {
-        batch = new SpriteBatch();
-        img = new Texture("badlogic.jpg");
+        Gdx.app.log("AlbertGame", "created");
+        setMainScreen();
     }
 
-    @Override
-    public void render() {
-        Gdx.gl.glClearColor(1, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        batch.begin();
-        batch.draw(img, 0, 0);
-        batch.end();
+    public void setMainScreen() {
+        Gdx.app.log("AlbertGame", "main screen active");
+        setScreen(splash);
+    }
+
+    public void setLetrisScreen() {
+        Gdx.app.log("AlbertGame", "letris screen active");
+        setScreen(letris);
+    }
+
+    public void setFillTheGapsScreen() {
+        Gdx.app.log("AlbertGame", "fillthegaps screen active");
+        setScreen(fillthegaps);
     }
 }
