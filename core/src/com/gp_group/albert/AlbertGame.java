@@ -7,6 +7,8 @@ import com.gp_group.albert.core.output.screens.fillthegaps_screen.FillTheGapsScr
 import com.gp_group.albert.core.output.screens.letris_screen.LetrisScreen;
 import com.gp_group.albert.core.output.screens.main_splash.MainSplash;
 import com.gp_group.albert.core.output.screens.main_sreen.MainScreen;
+import com.gp_group.albert.core.output.screens.multiplayer_screen.MultiplayerScreen;
+
 
 /**
  * @author bluesialia
@@ -17,6 +19,7 @@ public class AlbertGame extends Game {
     final Screen main = new MainScreen();
     final Screen letris = new LetrisScreen();
     final Screen fillthegaps = new FillTheGapsScreen();
+    final Screen multiplayer = new MultiplayerScreen();
 
     @Override
     public void create() {
@@ -42,5 +45,9 @@ public class AlbertGame extends Game {
     public void setFillTheGapsScreen() {
         Gdx.app.log("AlbertGame", "fillthegaps screen active");
         setScreen(fillthegaps);
+    }
+    public void setMultiplayerScreen(){
+        Gdx.app.log("AlbertGame", "multiplayer screen active");
+        setScreen(multiplayer);
     }
 }
