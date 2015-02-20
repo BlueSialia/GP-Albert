@@ -3,7 +3,7 @@ package com.gp_group.albert;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.gp_group.albert.core.output.screens.fillthegaps_screen.FTGScreen;
+import com.gp_group.albert.core.output.screens.fillthegaps_screen.FillTheGapsScreen;
 import com.gp_group.albert.core.output.screens.letris_screen.LetrisScreen;
 import com.gp_group.albert.core.output.screens.main_splash.MainSplash;
 import com.gp_group.albert.core.output.screens.main_sreen.MainScreen;
@@ -18,7 +18,7 @@ public class AlbertGame extends Game {
     final Screen splash = new MainSplash();
     final Screen main = new MainScreen();
     final Screen letris = new LetrisScreen();
-    final Screen fillthegaps = new FTGScreen();
+    final Screen fillthegaps = new FillTheGapsScreen();
     final Screen multiplayer = new MultiplayerScreen();
 
     @Override

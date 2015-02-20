@@ -1,29 +1,12 @@
 package com.gp_group.albert.core.output.screens.fillthegaps_screen;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
 /**
- * @author GPAlbert
+ * @author bluesialia
  *         Date: 4/02/15
  */
-public class FTGScreen implements Screen {
-
-    private FTGWorld gw;
-    private FTGRenderer gr;
-
-    public FTGScreen(){
-        float screenWidth = Gdx.graphics.getWidth();
-        float screenHeight = Gdx.graphics.getHeight();
-        float gameWidth = 136;
-        float gameHeight = screenHeight/(screenWidth/gameWidth);
-        int midPointY = (int) gameHeight/2;
-        Gdx.app.log("FTGScreen", "attached");
-        gw = new FTGWorld(midPointY);
-        gr = new FTGRenderer(gw);
-        // TODO
-        //Gdx.input.setInputProcessor();
-    }
+public class FillTheGapsScreen implements Screen {
 
     /**
      * Called when this screen becomes the current screen for a {@link com.badlogic.gdx.Game}.
