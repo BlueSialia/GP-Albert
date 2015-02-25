@@ -1,5 +1,6 @@
 package com.gp_group.albert.core.output.screens.letris_screen;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
 /**
@@ -8,12 +9,25 @@ import com.badlogic.gdx.Screen;
  */
 public class LetrisScreen implements Screen {
 
+    private final LetrisWorld world;
+    private float runtime;
+
+    /**
+     * Creates a LetrisScreen instance.
+     */
+    public LetrisScreen() {
+        Gdx.app.log("LetrisScreen", "created");
+        float screenWidth = Gdx.graphics.getWidth();
+        float screenHeight = Gdx.graphics.getHeight();
+        this.world = new LetrisWorld(screenWidth, screenHeight, 5, 5, 5);//FIXME: reduce dimension for the rest of UI (buttons...), because the size of the world is not the full screen. And find the correct period, gravity and maxSpeed.
+    }
+
     /**
      * Called when this screen becomes the current screen for a {@link com.badlogic.gdx.Game}.
      */
     @Override
     public void show() {
-
+        Gdx.app.log("LetrisScreen", "shown");
     }
 
     /**
@@ -23,7 +37,9 @@ public class LetrisScreen implements Screen {
      */
     @Override
     public void render(float delta) {
-
+        Gdx.app.log("LetrisScreen", "rendered");
+        runtime += delta;
+        world.update(delta);
     }
 
     /**
@@ -33,7 +49,7 @@ public class LetrisScreen implements Screen {
      */
     @Override
     public void resize(int width, int height) {
-
+        Gdx.app.log("LetrisScreen", "resized");
     }
 
     /**
@@ -41,7 +57,7 @@ public class LetrisScreen implements Screen {
      */
     @Override
     public void pause() {
-
+        Gdx.app.log("LetrisScreen", "paused");
     }
 
     /**
@@ -49,7 +65,7 @@ public class LetrisScreen implements Screen {
      */
     @Override
     public void resume() {
-
+        Gdx.app.log("LetrisScreen", "resumed");
     }
 
     /**
@@ -57,7 +73,7 @@ public class LetrisScreen implements Screen {
      */
     @Override
     public void hide() {
-
+        Gdx.app.log("LetrisScreen", "hided");
     }
 
     /**
@@ -65,6 +81,6 @@ public class LetrisScreen implements Screen {
      */
     @Override
     public void dispose() {
-
+        Gdx.app.log("LetrisScreen", "disposed");
     }
 }

@@ -1,4 +1,4 @@
-package com.gp_group.albert.core.output.screens.fillthegaps_objects;
+package com.gp_group.albert.objects;
 
 import java.util.ArrayList;
 
@@ -13,6 +13,5 @@ public class Phrase {
     private String correctAnswer;
 
     public Phrase(){
-        phrase
     }
 }

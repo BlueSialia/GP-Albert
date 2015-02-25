@@ -1,4 +1,4 @@
-package com.gp_group.albert.core.output.screens.fillthegaps_helpers;
+package com.gp_group.albert.helpers;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -9,9 +9,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  */
 public class AssetLoader {
 
-    public static Texture texture; //General texture for all the proyect
-    public static TextureRegion background;
-    public static TextureRegion optTexture;
+    private static Texture texture; //General texture for all the proyect
+    private static TextureRegion background;
+    private static TextureRegion optTexture;
 
     public static void load(){
         //TODO necesitamos los pixels para hacer este apartado.
