@@ -3,6 +3,7 @@ package com.gp_group.albert.core.output.screens.letris_screen;
 import com.badlogic.gdx.Gdx;
 import com.gp_group.albert.helpers.MathHelpers;
 import com.gp_group.albert.objects.Letter;
+import com.gp_group.albert.objects.SelectedLetters;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.Random;
 public class LetrisWorld {
 
     private final List<Letter>[] letters;
+    private SelectedLetters selectedLetters;
 
     private final float worldWidth, worldHeight, lettersSize, gravity, maxSpeed;
     private final Random generator = new Random(System.currentTimeMillis());
@@ -35,11 +37,19 @@ public class LetrisWorld {
         this.gravity = gravity;
         this.maxSpeed = maxSpeed;
         this.lettersSize = calculateSizeOfLetters();
+        this.selectedLetters = new SelectedLetters();
         this.letters = (List<Letter>[]) new List<?>[(int) (worldWidth / lettersSize)]; //FIXME: Unchecked cast
         for (int i = 0; i < this.letters.length; i++) {
             this.letters[i] = new LinkedList<Letter>();
         }
     }
+    public List<Letter>[] getLetters(){
+        return letters;
+    }
+    public SelectedLetters getSelectedLetters(){
+        return selectedLetters;
+    }
+
 
     /**
      * Calculates the size of the letters in a way the number of letters that fit in the screen isn't very small (<50) nor big (>110).

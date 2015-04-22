@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.gp_group.albert.core.output.screens.letris_screen.LetrisWorld;
 
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class Letter {
     private final Vector2 acceleration;
 
     private final Rectangle boundingRectangle;
+    private boolean isPressed = false;
+    private boolean isSelected = false;
 
     public Letter(float side, float x, float y, float gravity, float maxSpeed) {
         Gdx.app.log("Letter", "created");
@@ -76,5 +79,29 @@ public class Letter {
         if (velocity.y > maxVelocity.y) {
             velocity.y = maxVelocity.y;
         }
+    }
+    public boolean isTouchDown(int screenX, int screenY) {
+        if (boundingRectangle.contains(screenX, screenY)) {
+            isPressed = true;
+            return true;
+        }
+        return false;
+    }
+    public boolean isTouchUp(int screenX, int screenY, LetrisWorld world) {
+        // It only counts as a touchUp if the button is in a pressed state.
+        if (boundingRectangle.contains(screenX, screenY) && isPressed) {
+            if(isSelected){
+                isSelected = false;
+                world.getSelectedLetters().removeSelectedLetter(this);
+            }else {
+                isSelected = true;
+                world.getSelectedLetters().addSelectedLetter(this);
+            }
+            isPressed = false;
+            return true;
+        }
+        // Whenever a finger is released, we will cancel any presses.
+        isPressed = false;
+        return false;
     }
 }
