@@ -23,7 +23,7 @@ public class LetrisScreen implements Screen {
     }
 
     /**
-     * Called when this screen becomes the current screen for a {@link com.badlogic.gdx.Game}.
+     * Called when this screen becomes the current screen for {@link com.gp_group.albert.AlbertGame}.
      */
     @Override
     public void show() {
@@ -69,7 +69,7 @@ public class LetrisScreen implements Screen {
     }
 
     /**
-     * Called when this screen is no longer the current screen for a {@link com.badlogic.gdx.Game}.
+     * Called when this screen is no longer the current screen for {@link com.gp_group.albert.AlbertGame}.
      */
     @Override
     public void hide() {

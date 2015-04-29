@@ -3,6 +3,7 @@ package com.gp_group.albert.core.output.screens.letris_screen;
 import com.badlogic.gdx.Gdx;
 import com.gp_group.albert.helpers.MathHelpers;
 import com.gp_group.albert.objects.Letter;
+import org.apache.commons.math3.fraction.Fraction;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -18,7 +19,8 @@ public class LetrisWorld {
 
     private final float worldWidth, worldHeight, lettersSize, gravity, maxSpeed;
     private final Random generator = new Random(System.currentTimeMillis());
-    private float timer, period;
+    private final float period;
+    private float timer;
 
     /**
      * Creates a LetrisWorld instance.
@@ -42,22 +44,12 @@ public class LetrisWorld {
     }
 
     /**
-     * Calculates the size of the letters in a way the number of letters that fit in the screen isn't very small (<50) nor big (>110).
+     * Calculates the size of the letters in a way the number of letters that fit in the screen isn't very small (<50) nor big (>150).
      */
     private float calculateSizeOfLetters() {
-        int width = Math.round(worldWidth * 100) * 100,
-                height = Math.round(worldHeight * 100) * 100;
-
-        float size = (float) (MathHelpers.GCD(width, height)) / 10000f;
-
-        while ((worldWidth / size) * (worldHeight / size) < 50) {
-            size = size / 2;
-        }
-        while ((worldWidth / size) * (worldHeight / size) > 110) {
-            size = size * 2; //NOTE: This needs to pass a series of tests to be sure it works. Because I think it shouldn't be executed... EVER.
-        }
-
-        return size;
+        Gdx.app.log("LetrisWorld", "calculated the Size Of Letters");
+        Fraction fraction = MathHelpers.diophantineApproximation(worldHeight / worldWidth, 50, 150); //NOTE: I don't think this is going to work in the first try.
+        return worldWidth / fraction.getDenominator();
     }
 
     /**
