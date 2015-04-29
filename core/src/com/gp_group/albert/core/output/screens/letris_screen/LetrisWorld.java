@@ -3,6 +3,8 @@ package com.gp_group.albert.core.output.screens.letris_screen;
 import com.badlogic.gdx.Gdx;
 import com.gp_group.albert.helpers.MathHelpers;
 import com.gp_group.albert.objects.Letter;
+import com.gp_group.albert.objects.SelectedLetters;
+
 import org.apache.commons.math3.fraction.Fraction;
 
 import java.util.LinkedList;
@@ -16,6 +18,7 @@ import java.util.Random;
 public class LetrisWorld {
 
     private final List<Letter>[] letters;
+    private SelectedLetters selectedLetters;
 
     private final float worldWidth, worldHeight, lettersSize, gravity, maxSpeed;
     private final Random generator = new Random(System.currentTimeMillis());
@@ -32,6 +35,7 @@ public class LetrisWorld {
     public LetrisWorld(float width, float height, float period, float gravity, float maxSpeed) {
         Gdx.app.log("LetrisWorld", "created");
         this.worldWidth = width;
+        selectedLetters = new SelectedLetters();
         this.worldHeight = height;
         this.period = period;
         this.gravity = gravity;
@@ -80,5 +84,11 @@ public class LetrisWorld {
         int column = generator.nextInt(letters.length);
         Letter newLetter = new Letter(lettersSize, column * lettersSize, 0, gravity, maxSpeed);
         letters[column].add(newLetter);
+    }
+    public SelectedLetters getSelectedLetters() {
+        return this.selectedLetters;
+    }
+    public List<Letter>[] getLetters(){
+        return this.letters;
     }
 }
