@@ -65,7 +65,7 @@ public class Letter {
                 position.y += velocity.y * delta;
             }
         }
-        boundingRectangle.setPosition(position); //NOTE: Needs testing. Lots of.
+        boundingRectangle.setPosition(position); //NOTE: Needs testing. Lots of. Because the coordinates system is... ¿?
     }
 
     /**
