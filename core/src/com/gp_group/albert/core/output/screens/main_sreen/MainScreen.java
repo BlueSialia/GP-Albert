@@ -10,6 +10,8 @@ import com.badlogic.gdx.Screen;
 public class MainScreen implements Screen {
 
     private float runtime;
+    private MainWorld gw;
+    private MainRenderer gr;
 
     /**
      * Creates a MainScreen instance.
