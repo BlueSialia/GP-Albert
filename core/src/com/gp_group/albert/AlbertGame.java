@@ -8,6 +8,7 @@ import com.gp_group.albert.core.output.screens.letris_screen.LetrisScreen;
 import com.gp_group.albert.core.output.screens.main_splash.MainSplash;
 import com.gp_group.albert.core.output.screens.main_sreen.MainScreen;
 import com.gp_group.albert.core.output.screens.multiplayer_screen.MultiplayerScreen;
+import com.gp_group.albert.helpers.AssetLoader;
 
 
 /**
@@ -33,7 +34,8 @@ public class AlbertGame extends Game {
         letris = new LetrisScreen();
         fillthegaps = new FTGScreen();
         multiplayer = new MultiplayerScreen();
-        setMainSplash();
+        AssetLoader.load();
+        setLetrisScreen();
     }
 
     /**

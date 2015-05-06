@@ -106,4 +106,8 @@ public class Letter {
         isPressed = false;
         return false;
     }
+
+    public Rectangle getBoundingRectangle(){
+        return boundingRectangle;
+    }
 }
