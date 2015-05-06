@@ -14,27 +14,27 @@ public class MathHelpers {
 
     /**
      * Calculates an approximation of the given number as a division of two integers with the Diophantine Approximation.
+     *
      * @param real Number to approximate to.
-     * @param min Minimum value of the product of the numerator and determinant of the division.
-     * @param max Maximum value of the product of the numerator and determinant of the division.
-     * @return An approximation of real as a fraction. The product of the numerator and determinant will be greater than min.
+     * @param min  Minimum value of the product of the numerator and determinant of the division.
+     * @param max  Maximum value of the product of the numerator and determinant of the division.
+     * @return The denominator of an approximation of real as a fraction. The product of the numerator and determinant will be greater than min.
      */
-    public static Fraction diophantineApproximation(double real, int min, int max) {
+    public static int diophantineApproximation(double real, int min, int max) {
         double number = real;
         Fraction fraction = new Fraction(1);
         List<Integer> succession = new LinkedList<Integer>();
-        while (fraction.getNumerator() * fraction.getDenominator() < min) {
+        while (fraction.getNumerator() * fraction.getDenominator() < min && fraction.doubleValue() != real) {
             int current = (int) number;
-            number = 1 / (number - (int) number);
+            number = 1 / (number - current);
             succession.add(current);
             fraction = fractionResult(succession);
         }
-        if (fraction.getNumerator() * fraction.getDenominator() > max) {
-            succession.remove(succession.size());
-            fraction = fractionResult(succession);
-            fraction = fraction.add(new Fraction(1, fraction.getDenominator() * 2));
+        if (fraction.getNumerator() * fraction.getDenominator() < min) {
+            int relation = min / (fraction.getNumerator() * fraction.getDenominator()) + 1;
+            fraction = new Fraction(1, fraction.getDenominator() * relation);
         }
-        return fraction;
+        return fraction.getDenominator();
     }
 
     /**
@@ -47,8 +47,11 @@ public class MathHelpers {
         Fraction fraction = new Fraction(0);
         ListIterator<Integer> iterator = succession.listIterator(succession.size());
         while (iterator.hasPrevious()) {
-            fraction = fraction.add(iterator.previous()).reciprocal();
+            Integer num = iterator.previous();
+            if (iterator.hasPrevious() && !(fraction.equals(Fraction.ZERO) && num == 0))
+                fraction = fraction.add(num).reciprocal();
         }
+        if (iterator.hasPrevious()) fraction = fraction.add(iterator.previous());
         return fraction;
     }
 }

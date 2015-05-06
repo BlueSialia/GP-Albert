@@ -12,12 +12,12 @@ public class FTGScreen implements Screen {
     private FTGWorld gw;
     private FTGRenderer gr;
 
-    public FTGScreen(){
+    public FTGScreen() {
         float screenWidth = Gdx.graphics.getWidth();
         float screenHeight = Gdx.graphics.getHeight();
         float gameWidth = 136;
-        float gameHeight = screenHeight/(screenWidth/gameWidth);
-        int midPointY = (int) gameHeight/2;
+        float gameHeight = screenHeight / (screenWidth / gameWidth);
+        int midPointY = (int) gameHeight / 2;
         Gdx.app.log("FTGScreen", "attached");
         gw = new FTGWorld(midPointY);
         gr = new FTGRenderer(gw);

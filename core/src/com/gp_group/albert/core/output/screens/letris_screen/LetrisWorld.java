@@ -5,8 +5,6 @@ import com.gp_group.albert.helpers.MathHelpers;
 import com.gp_group.albert.objects.Letter;
 import com.gp_group.albert.objects.SelectedLetters;
 
-import org.apache.commons.math3.fraction.Fraction;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -18,11 +16,10 @@ import java.util.Random;
 public class LetrisWorld {
 
     private final List<Letter>[] letters;
-    private SelectedLetters selectedLetters;
-
     private final float worldWidth, worldHeight, lettersSize, gravity, maxSpeed;
     private final Random generator = new Random(System.currentTimeMillis());
     private final float period;
+    private SelectedLetters selectedLetters;
     private float timer;
 
     /**
@@ -52,8 +49,8 @@ public class LetrisWorld {
      */
     private float calculateSizeOfLetters() {
         Gdx.app.log("LetrisWorld", "calculated the Size Of Letters");
-        Fraction fraction = MathHelpers.diophantineApproximation(worldHeight / worldWidth, 50, 150); //NOTE: I don't think this is going to work in the first try.
-        return worldWidth / fraction.getDenominator();
+        int size = MathHelpers.diophantineApproximation(worldHeight / worldWidth, 50, 150); //NOTE: I don't think this is going to work in the first try.
+        return worldWidth / size;
     }
 
     /**
@@ -85,10 +82,12 @@ public class LetrisWorld {
         Letter newLetter = new Letter(lettersSize, column * lettersSize, 0, gravity, maxSpeed);
         letters[column].add(newLetter);
     }
+
     public SelectedLetters getSelectedLetters() {
         return this.selectedLetters;
     }
-    public List<Letter>[] getLetters(){
+
+    public List<Letter>[] getLetters() {
         return this.letters;
     }
 }

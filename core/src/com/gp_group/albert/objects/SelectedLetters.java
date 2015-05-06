@@ -10,18 +10,20 @@ public class SelectedLetters {
     }
 
 
-    public boolean addSelectedLetter(Letter letter){
+    public boolean addSelectedLetter(Letter letter) {
         lettersSelected.add(letter);
         return true;
     }
-    public boolean removeSelectedLetter(Letter letter){
-        if(lettersSelected.contains(letter)) {
+
+    public boolean removeSelectedLetter(Letter letter) {
+        if (lettersSelected.contains(letter)) {
             lettersSelected.remove(letter);
             return true;
         }
         return false;
     }
-    public boolean reiniciar(){
+
+    public boolean reiniciar() {
         lettersSelected.clear();
         return true;
     }

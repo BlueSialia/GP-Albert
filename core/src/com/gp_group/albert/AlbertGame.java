@@ -16,11 +16,11 @@ import com.gp_group.albert.core.output.screens.multiplayer_screen.MultiplayerScr
  */
 public class AlbertGame extends Game {
 
-    private final Screen splash = new MainSplash();
-    private final Screen main = new MainScreen();
-    private final Screen letris = new LetrisScreen();
-    private final Screen fillthegaps = new FTGScreen();
-    private final Screen multiplayer = new MultiplayerScreen();
+    private Screen splash;
+    private Screen main;
+    private Screen letris;
+    private Screen fillthegaps;
+    private Screen multiplayer;
 
     /**
      * Starts the app.
@@ -28,6 +28,11 @@ public class AlbertGame extends Game {
     @Override
     public void create() {
         Gdx.app.log("AlbertGame", "created");
+        splash = new MainSplash();
+        main = new MainScreen();
+        letris = new LetrisScreen();
+        fillthegaps = new FTGScreen();
+        multiplayer = new MultiplayerScreen();
         setMainSplash();
     }
 
@@ -66,7 +71,7 @@ public class AlbertGame extends Game {
     /**
      * Sets the MultiplayerScreen as active.
      */
-    public void setMultiplayerScreen(){
+    public void setMultiplayerScreen() {
         Gdx.app.log("AlbertGame", "multiplayer screen active");
         setScreen(multiplayer);
     }

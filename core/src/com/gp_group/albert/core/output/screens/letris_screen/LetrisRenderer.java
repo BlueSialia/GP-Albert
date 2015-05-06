@@ -13,7 +13,7 @@ public class LetrisRenderer {
     private OrthographicCamera cam;
     private ShapeRenderer shapeRenderer;
 
-    public LetrisRenderer(LetrisWorld world){
+    public LetrisRenderer(LetrisWorld world) {
         this.myLetrisWorld = world;
 
         cam = new OrthographicCamera();
@@ -23,7 +23,7 @@ public class LetrisRenderer {
         shapeRenderer.setProjectionMatrix(cam.combined);
     }
 
-    public void render(){
+    public void render() {
         Gdx.app.log("LetrisRenderer", "render");
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

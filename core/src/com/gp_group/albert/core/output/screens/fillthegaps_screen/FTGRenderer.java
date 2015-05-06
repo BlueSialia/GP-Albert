@@ -14,7 +14,7 @@ public class FTGRenderer {
     private OrthographicCamera cam;
     private ShapeRenderer shapeRenderer;
 
-    public FTGRenderer(FTGWorld world){
+    public FTGRenderer(FTGWorld world) {
         this.myFtgWorld = world;
 
         cam = new OrthographicCamera();
@@ -24,7 +24,7 @@ public class FTGRenderer {
         shapeRenderer.setProjectionMatrix(cam.combined);
     }
 
-    public void render(){
+    public void render() {
         Gdx.app.log("FTGRenderer", "render");
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

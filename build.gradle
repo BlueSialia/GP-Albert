@@ -99,8 +99,8 @@ project(":core") {
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        compile 'org.apache.commons:commons-collections4:4.0'
-        compile 'org.apache.commons:commons-math3:3.4.1'
+        compile "org.apache.commons:commons-collections4:4.0"
+        compile "org.apache.commons:commons-math3:3.4.1"
     }
 }
 

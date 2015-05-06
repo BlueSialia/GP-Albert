@@ -6,7 +6,7 @@ import com.gp_group.albert.objects.Letter;
 
 import java.util.List;
 
-public class InputHandler implements InputProcessor{
+public class InputHandler implements InputProcessor {
     private LetrisWorld world;
 
     public InputHandler(LetrisWorld world) {

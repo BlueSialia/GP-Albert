@@ -12,6 +12,6 @@ public class Phrase {
     private ArrayList<String> possibleAnswers;
     private String correctAnswer;
 
-    public Phrase(){
+    public Phrase() {
     }
 }

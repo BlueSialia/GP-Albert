@@ -13,7 +13,7 @@ public class MainRenderer {
     private OrthographicCamera cam;
     private ShapeRenderer shapeRenderer;
 
-    public MainRenderer(MainWorld world){
+    public MainRenderer(MainWorld world) {
         this.myMainWorld = world;
 
         cam = new OrthographicCamera();
@@ -23,7 +23,7 @@ public class MainRenderer {
         shapeRenderer.setProjectionMatrix(cam.combined);
     }
 
-    public void render(){
+    public void render() {
         Gdx.app.log("MainRenderer", "render");
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

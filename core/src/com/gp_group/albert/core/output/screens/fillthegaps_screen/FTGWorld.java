@@ -12,7 +12,7 @@ public class FTGWorld {
     //TODO: private Score score;
     //TODO: private timer
 
-    public FTGWorld(float midPointY){
+    public FTGWorld(float midPointY) {
         //TODO Seguir.
     }
 }

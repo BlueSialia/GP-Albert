@@ -17,7 +17,7 @@ public class AssetLoader {
     private static TextureRegion background;
     private static Dictionary _dictionary_;
 
-    public static void load(){
+    public static void load() throws IOException {
         //TODO necesitamos los pixels para hacer este apartado.
         texture = new Texture(Gdx.files.internal("android/assets/textureAlbert.png"));
         texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
@@ -26,11 +26,12 @@ public class AssetLoader {
         background.flip(false, true);
     }
 
-    public static void dispose(){
+    public static void dispose() {
         texture.dispose();
     }
 
-    public void loadDictionary(String language) throws IOException {
-        _dictionary_ = new Dictionary(Gdx.files.internal("android/assets/" + language));
+    public static Dictionary loadDictionary(String language) throws IOException {
+        _dictionary_ = new Dictionary(Gdx.files.internal("dictionary/" + language + ".dic"));
+        return _dictionary_;
     }
 }

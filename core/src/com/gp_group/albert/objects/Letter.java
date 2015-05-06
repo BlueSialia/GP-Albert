@@ -80,6 +80,7 @@ public class Letter {
             velocity.y = maxVelocity.y;
         }
     }
+
     public boolean isTouchDown(int screenX, int screenY) {
         if (boundingRectangle.contains(screenX, screenY)) {
             isPressed = true;
@@ -87,13 +88,14 @@ public class Letter {
         }
         return false;
     }
+
     public boolean isTouchUp(int screenX, int screenY, LetrisWorld world) {
         // It only counts as a touchUp if the button is in a pressed state.
         if (boundingRectangle.contains(screenX, screenY) && isPressed) {
-            if(isSelected){
+            if (isSelected) {
                 isSelected = false;
                 world.getSelectedLetters().removeSelectedLetter(this);
-            }else {
+            } else {
                 isSelected = true;
                 world.getSelectedLetters().addSelectedLetter(this);
             }
