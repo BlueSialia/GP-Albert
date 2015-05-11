@@ -38,7 +38,7 @@ public class InputHandler implements InputProcessor {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if(botonOk.contains(screenX,screenY)){
-            Gdx.app.log("ggljkadfslkfadsnkladfsadvs",world.getPalabra().getText());
+            Gdx.app.log("InputHandler", world.getPalabra().getText());
             if(AssetLoader.getDiccionario().exist(world.getPalabra().getText())){
                 //TODO sumar puntuacion
                 Iterator<Letter> itr = world.getSelectedLetters().getIterador();

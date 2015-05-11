@@ -69,7 +69,7 @@ public class LetrisWorld {
      */
     public void update(float delta) {
         if (!gameOver) {
-            Gdx.app.log("LetrisWorld", "updated");
+//            Gdx.app.log("LetrisWorld", "updated");
             timer += delta;
             if (timer > period) {
                 timer -= period;

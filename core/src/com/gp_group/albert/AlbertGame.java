@@ -50,6 +50,7 @@ public class AlbertGame extends Game {
      */
     public void setMainScreen() {
         Gdx.app.log("AlbertGame", "main screen active");
+        main = new MainScreen(this);
         setScreen(main);
     }
 
@@ -67,6 +68,7 @@ public class AlbertGame extends Game {
      */
     public void setFillTheGapsScreen() {
         Gdx.app.log("AlbertGame", "fillthegaps screen active");
+        fillthegaps = new FTGScreen(this);
         setScreen(fillthegaps);
     }
 

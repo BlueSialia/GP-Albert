@@ -44,7 +44,7 @@ public class LetrisScreen implements Screen {
      */
     @Override
     public void render(float delta) {
-        Gdx.app.log("LetrisScreen", "rendered");
+//        Gdx.app.log("LetrisScreen", "rendered");
         runtime += delta;
         world.update(delta);
         renderer.render(delta); // GameRenderer renders
