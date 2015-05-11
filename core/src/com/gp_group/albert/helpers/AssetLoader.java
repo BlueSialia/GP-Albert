@@ -13,11 +13,13 @@ import java.io.IOException;
  */
 public class AssetLoader {
 
-    private static Texture texture; //General texture for all the proyect
     public static TextureRegion letrisOk, letrisBorrar, letrisAtras;
+    private static Texture texture; //General texture for all the proyect
     private static Dictionary _dictionary_;
+    private static Texture logo;
 
-    public static void load(){
+    public static void load() {
+        logo = new Texture(Gdx.files.internal("logo.png"));
         //TODO necesitamos los pixels para hacer este apartado.
 
 //        texture = new Texture(Gdx.files.internal("/android/assets/textureAlbert.png"));
@@ -37,6 +39,10 @@ public class AssetLoader {
 
     public static void dispose(){
         texture.dispose();
+    }
+
+    public static Texture getLogo() {
+        return logo;
     }
 
     public void loadDictionary(String language) throws IOException {

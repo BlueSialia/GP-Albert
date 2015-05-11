@@ -26,7 +26,7 @@ public class Letter {
 
     public Letter(float side, float x, float y, float gravity, float maxSpeed) {
         Gdx.app.log("Letter", "created");
-        this.position = new Vector2(x, y);
+        this.position = new Vector2(x, y - side);
         this.velocity = new Vector2(0, 0);
         this.maxVelocity = new Vector2(0, maxSpeed);
         this.acceleration = new Vector2(0, gravity);
@@ -57,8 +57,8 @@ public class Letter {
         Gdx.app.log("Letter", "position updated");
         if (column.indexOf(this) == 0) {
             position.y += velocity.y * delta;
-            if (position.y > floor) {
-                position.y = floor;
+            if (position.y + boundingRectangle.height > floor) {
+                position.y = floor - boundingRectangle.height;
             }
         } else {
             if (!Intersector.overlaps(boundingRectangle, column.get(column.indexOf(this) - 1).boundingRectangle)) {

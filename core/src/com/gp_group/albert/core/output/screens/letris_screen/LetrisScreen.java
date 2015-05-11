@@ -23,7 +23,7 @@ public class LetrisScreen implements Screen {
         float screenHeight = Gdx.graphics.getHeight();
         float gameWidth = 136;
         float gameHeight = screenHeight / (screenWidth / gameWidth);
-        this.world = new LetrisWorld(gameWidth, gameHeight, 5, 5, 5);//FIXME: reduce dimension for the rest of UI (buttons...), because the size of the world is not the full screen. And find the correct period, gravity and maxSpeed.
+        this.world = new LetrisWorld(gameWidth, gameHeight, 3, 10, 25);//FIXME: reduce dimension for the rest of UI (buttons...), because the size of the world is not the full screen. And find the correct period, gravity and maxSpeed.
         renderer = new LetrisRenderer(world, (int) gameWidth, (int)gameHeight); // initialize renderer
 
         Gdx.input.setInputProcessor(new InputHandler(world));
