@@ -49,8 +49,8 @@ public class LetrisWorld {
      */
     private float calculateSizeOfLetters() {
         Gdx.app.log("LetrisWorld", "calculated the Size Of Letters");
-        int size = MathHelpers.diophantineApproximation(worldHeight / worldWidth, 50, 150); //NOTE: I don't think this is going to work in the first try.
-        return worldWidth / size;
+        int quantity = MathHelpers.diophantineApproximation(worldHeight / worldWidth, 50, 150); //NOTE: I don't think this is going to work in the first try.
+        return worldWidth / quantity;
     }
 
     /**

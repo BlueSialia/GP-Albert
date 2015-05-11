@@ -29,12 +29,12 @@ public class AlbertGame extends Game {
     @Override
     public void create() {
         Gdx.app.log("AlbertGame", "created");
+        AssetLoader.load();
         splash = new MainSplash(this);
-        main = new MainScreen();
+        main = new MainScreen(this);
         letris = new LetrisScreen();
         fillthegaps = new FTGScreen();
         multiplayer = new MultiplayerScreen();
-        AssetLoader.load();
         setMainSplash();
     }
 

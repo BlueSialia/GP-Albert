@@ -51,7 +51,7 @@ public class MainSplash implements Screen {
         TweenCallback cb = new TweenCallback() {
             @Override
             public void onEvent(int type, BaseTween<?> source) {
-                game.setLetrisScreen();
+                game.setMainScreen();
             }
         };
 
