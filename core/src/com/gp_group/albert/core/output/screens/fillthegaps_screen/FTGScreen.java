@@ -12,21 +12,17 @@ public class FTGScreen implements Screen {
     private FTGWorld gw;
     private FTGRenderer gr;
 
-    public FTGScreen() {
+    public FTGScreen(){
         float screenWidth = Gdx.graphics.getWidth();
         float screenHeight = Gdx.graphics.getHeight();
-        float gameWidth = 136;
-        float gameHeight = screenHeight / (screenWidth / gameWidth);
-        int midPointY = (int) gameHeight / 2;
-        Gdx.app.log("FTGScreen", "attached");
-        gw = new FTGWorld(midPointY);
-        gr = new FTGRenderer(gw);
+        gw = new FTGWorld(screenWidth, screenHeight);
+        gr = new FTGRenderer(gw, screenWidth, screenHeight);
         // TODO
         //Gdx.input.setInputProcessor();
     }
 
     /**
-     * Called when this screen becomes the current screen for {@link com.gp_group.albert.AlbertGame}.
+     * Called when this screen becomes the current screen for a {@link com.badlogic.gdx.Game}.
      */
     @Override
     public void show() {
@@ -40,7 +36,9 @@ public class FTGScreen implements Screen {
      */
     @Override
     public void render(float delta) {
-
+        //Adrian
+        gw.update(delta);
+        gr.render();
     }
 
     /**
@@ -70,9 +68,9 @@ public class FTGScreen implements Screen {
     }
 
     /**
-     * Called when this screen is no longer the current screen for {@link com.gp_group.albert.AlbertGame}.
+     * Called when this screen is no longer the current screen for a {@link com.badlogic.gdx.Game}.
      */
-    @Override
+//    @Override
     public void hide() {
 
     }

@@ -1,0 +1,110 @@
+<filltheGaps>
+	<question>
+		<phrase>
+            My name ____ Bob.
+		</phrase>
+		<posAnswers>
+			<a1>is</a1>
+			<a2>are</a2>
+			<a3>his</a3>
+			<a4>were</a4>
+		</posAnswers>
+		<correctAnswer>is</correctAnswer>
+	</question>
+	<question>
+		<phrase>
+            She ____ in Bilbao.
+		</phrase>
+		<posAnswers>
+			<a1>live</a1>
+			<a2>libes</a2>
+			<a3>lives</a3>
+			<a4>were</a4>
+		</posAnswers>
+		<correctAnswer>lives</correctAnswer>
+    </question>
+	<question>
+		<phrase>
+            Mark ____ come yesterday.
+		</phrase>
+		<posAnswers>
+			<a1>doesn't</a1>
+			<a2>didn't</a2>
+			<a3>don't</a3>
+			<a4>cannot</a4>
+		</posAnswers>
+		<correctAnswer>didn't</correctAnswer>
+	</question>
+	<question>
+		<phrase>
+            Laurel said: I ____ go with you.
+		</phrase>
+		<posAnswers>
+			<a1>am</a1>
+			<a2>was</a2>
+			<a3>doesn't</a3>
+			<a4>will</a4>
+		</posAnswers>
+		<correctAnswer>will</correctAnswer>
+	</question>
+	<question>
+		<phrase>
+            The colour of a banana is ____.
+		</phrase>
+		<posAnswers>
+			<a1>yellow</a1>
+			<a2>yallow</a2>
+			<a3>yelow</a3>
+			<a4>amarillo</a4>
+		</posAnswers>
+		<correctAnswer>yellow</correctAnswer>
+	</question>
+	<question>
+		<phrase>
+            Jon drives a bus. He is a ____.
+		</phrase>
+		<posAnswers>
+			<a1>doctor</a1>
+			<a2>builder</a2>
+			<a3>plumber</a3>
+			<a4>bus driver</a4>
+		</posAnswers>
+		<correctAnswer>bus driver</correctAnswer>
+	</question>
+	<question>
+		<phrase>
+            Two hundred and five plus one million and sixty one is ____.
+		</phrase>
+		<posAnswers>
+			<a1>1,100,006</a1>
+			<a2>1.200.066</a2>
+			<a3>1,200,066</a3>
+			<a4>1,558,066</a4>
+		</posAnswers>
+		<correctAnswer>1,200,066</correctAnswer>
+	</question>
+	<question>
+		<phrase>
+            If I am thristy I ____ drink ____.
+		</phrase>
+		<posAnswers>
+			<a1>am / alcohol</a1>
+			<a2>will / oil</a2>
+			<a3>will / water</a3>
+			<a4>was / water</a4>
+		</posAnswers>
+		<correctAnswer>will / water</correctAnswer>
+	</question>
+	<question>
+		<phrase>
+            It's about time ____ her home work.
+		</phrase>
+		<posAnswers>
+			<a1>she did</a1>
+			<a2>for to do</a2>
+			<a3>she would do</a3>
+			<a4>she were to do</a4>
+		</posAnswers>
+		<correctAnswer>she did</correctAnswer>
+	</question>
+</filltheGaps>

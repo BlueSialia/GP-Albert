@@ -1,6 +1,8 @@
 package com.gp_group.albert.core.output.screens.letris_screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.gp_group.albert.helpers.MathHelpers;
 import com.gp_group.albert.objects.Letter;
 import com.gp_group.albert.objects.SelectedLetters;
@@ -21,6 +23,8 @@ public class LetrisWorld {
     private final float period;
     private SelectedLetters selectedLetters;
     private float timer;
+    private Skin skinRest;
+    private TextArea palabra;
 
     /**
      * Creates a LetrisWorld instance.
@@ -31,7 +35,7 @@ public class LetrisWorld {
      */
     public LetrisWorld(float width, float height, float period, float gravity, float maxSpeed) {
         Gdx.app.log("LetrisWorld", "created");
-        this.worldWidth = width;
+        this.worldWidth = width*0.86f;
         selectedLetters = new SelectedLetters();
         this.worldHeight = height;
         this.period = period;
@@ -42,6 +46,9 @@ public class LetrisWorld {
         for (int i = 0; i < this.letters.length; i++) {
             this.letters[i] = new LinkedList<Letter>();
         }
+        skinRest = new Skin(Gdx.files.internal("uiskinPhrase.json"));
+        palabra=new TextArea("",skinRest);
+        createLetter();
     }
 
     /**
@@ -68,9 +75,16 @@ public class LetrisWorld {
 
         for (List<Letter> list : letters) {
             for (Letter l : list) {
-                l.update(delta, list, worldHeight);
+                l.update(delta, list, worldHeight*0.12f+worldHeight*0.75f);
             }
         }
+        palabra.setText(getSelectedLetters().getPalabra());
+
+        palabra.setWidth(Gdx.graphics.getWidth() / 2);
+        palabra.setHeight(worldHeight*0.08f);
+        this.palabra.setX((Gdx.graphics.getWidth() - Gdx.graphics.getWidth() / 2) / 2);
+        this.palabra.setY(10);
+        palabra.setDisabled(true);
     }
 
     /**
@@ -79,7 +93,7 @@ public class LetrisWorld {
     public void createLetter() {
         Gdx.app.log("LetrisWorld", "letter created");
         int column = generator.nextInt(letters.length);
-        Letter newLetter = new Letter(lettersSize, column * lettersSize, 0, gravity, maxSpeed);
+        Letter newLetter = new Letter(lettersSize, column * lettersSize, 0, gravity, maxSpeed, skinRest);
         letters[column].add(newLetter);
     }
 
@@ -89,5 +103,13 @@ public class LetrisWorld {
 
     public List<Letter>[] getLetters() {
         return this.letters;
+    }
+
+    public TextArea getPalabra(){
+        return palabra;
+    }
+    public void gameOver(){
+        //TODO Ha perdido. Mostrar puntuacion, etc
+        Gdx.app.log("wefwegewgegergerger---","Limite den letras. GAME OVER");
     }
 }
