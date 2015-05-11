@@ -2,6 +2,7 @@ package com.gp_group.albert.core.output.screens.fillthegaps_screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.gp_group.albert.AlbertGame;
 
 /**
  * @author GPAlbert
@@ -9,13 +10,13 @@ import com.badlogic.gdx.Screen;
  */
 public class FTGScreen implements Screen {
 
-    private FTGWorld gw;
-    private FTGRenderer gr;
+    private final FTGWorld gw;
+    private final FTGRenderer gr;
 
-    public FTGScreen(){
+    public FTGScreen(AlbertGame game) {
         float screenWidth = Gdx.graphics.getWidth();
         float screenHeight = Gdx.graphics.getHeight();
-        gw = new FTGWorld(screenWidth, screenHeight);
+        gw = new FTGWorld(game, screenWidth, screenHeight);
         gr = new FTGRenderer(gw, screenWidth, screenHeight);
         // TODO
         //Gdx.input.setInputProcessor();

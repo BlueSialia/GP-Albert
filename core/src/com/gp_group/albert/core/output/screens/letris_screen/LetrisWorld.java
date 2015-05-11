@@ -21,10 +21,10 @@ public class LetrisWorld {
     private final float worldWidth, worldHeight, lettersSize, gravity, maxSpeed;
     private final Random generator = new Random(System.currentTimeMillis());
     private final float period;
-    private SelectedLetters selectedLetters;
+    private final SelectedLetters selectedLetters;
+    private final Skin skinRest;
+    private final TextArea palabra;
     private float timer;
-    private Skin skinRest;
-    private TextArea palabra;
 
     /**
      * Creates a LetrisWorld instance.
@@ -56,7 +56,7 @@ public class LetrisWorld {
      */
     private float calculateSizeOfLetters() {
         Gdx.app.log("LetrisWorld", "calculated the Size Of Letters");
-        int quantity = MathHelpers.diophantineApproximation(worldHeight / worldWidth, 50, 150); //NOTE: I don't think this is going to work in the first try.
+        int quantity = MathHelpers.diophantineApproximation(worldHeight / worldWidth, 50, 70); //NOTE: I don't think this is going to work in the first try.
         return worldWidth / quantity;
     }
 
@@ -90,7 +90,7 @@ public class LetrisWorld {
     /**
      * Creates a Letter in one of the columns (randomly chosen) and adds it to the respective list of letters.
      */
-    public void createLetter() {
+    void createLetter() {
         Gdx.app.log("LetrisWorld", "letter created");
         int column = generator.nextInt(letters.length);
         Letter newLetter = new Letter(lettersSize, column * lettersSize, 0, gravity, maxSpeed, skinRest);

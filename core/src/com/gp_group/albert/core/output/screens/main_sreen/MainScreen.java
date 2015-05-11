@@ -22,13 +22,13 @@ public class MainScreen implements Screen {
     private final Stage stage;
     private final Table table;
     private final AlbertGame game;
-    private Label title;
-    private Skin skin;
-    private TextButton buttonFill;
-    private TextButton buttonLetris;
-    private TextButton buttonDict;
-    private int screenWidth;
-    private int screenHeight;
+    private final Label title;
+    private final Skin skin;
+    private final TextButton buttonFill;
+    private final TextButton buttonLetris;
+    private final TextButton buttonDict;
+    private final int screenWidth;
+    private final int screenHeight;
     private float runtime;
 
     /**

@@ -12,21 +12,15 @@ public class SelectedLetters {
 
 
     public boolean addSelectedLetter(Letter letter) {
-        lettersSelected.add(letter);
-        return true;
+        return lettersSelected.add(letter);
     }
 
     public boolean removeSelectedLetter(Letter letter) {
-        if (lettersSelected.contains(letter)) {
-            lettersSelected.remove(letter);
-            return true;
-        }
-        return false;
+        return lettersSelected.contains(letter) && lettersSelected.remove(letter);
     }
 
-    public boolean reiniciar() {
+    public void reiniciar() {
         lettersSelected.clear();
-        return true;
     }
 
     public String getPalabra(){

@@ -10,10 +10,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class InputHandler implements InputProcessor {
-    private LetrisWorld world;
-    private float gameWidth = Gdx.graphics.getWidth();
-    private float gameHeight = Gdx.graphics.getHeight();
-    private Rectangle botonOk;
+    private final LetrisWorld world;
+    private final float gameWidth = Gdx.graphics.getWidth();
+    private final float gameHeight = Gdx.graphics.getHeight();
+    private final Rectangle botonOk;
 
     public InputHandler(LetrisWorld world) {
         this.world = world;

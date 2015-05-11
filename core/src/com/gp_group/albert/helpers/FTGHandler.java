@@ -7,14 +7,14 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextField;
  * Created by ander on 6/05/15.
  * email: ancalotoru@gmail.com
  */
-public class FTGHandler implements InputProcessor {
+class FTGHandler implements InputProcessor {
 
     private TextField tfAnswer1;
     private TextField tfAnswer2;
     private TextField tfAnswer3;
     private TextField tfAnswer4;
 
-    public FTGHandler(TextField tf1, TextField tf2, TextField tf3, TextField tf4){
+    public FTGHandler() {
 
     }
 

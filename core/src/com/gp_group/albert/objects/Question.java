@@ -1,16 +1,14 @@
 package com.gp_group.albert.objects;
 
-import java.util.ArrayList;
-
 /**
  * Created by ander on 18/02/15.
  * email: ancalotoru@gmail.com
  */
 public class Question {
 
-    private String phrase;
-    private String[] possibleAnswers;
-    private String correctAnswer;
+    private final String phrase;
+    private final String[] possibleAnswers;
+    private final String correctAnswer;
 
     public Question(String pPhrase, String[] pAnswers, String correctAnswer){
         this.phrase = pPhrase;

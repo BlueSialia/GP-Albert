@@ -14,31 +14,25 @@ import com.gp_group.albert.objects.Question;
  * Created by ander on 18/02/15.
  * email: ancalotoru@gmail.com
  */
-public class FTGRenderer {
-    private FTGWorld myFtgWorld;
-    private OrthographicCamera cam;
-
+class FTGRenderer {
+    private final FTGWorld myFtgWorld;
+    private final OrthographicCamera cam;
+    private final ShapeRenderer shapeRenderer;
+    //    private SpriteBatch batch;
+//    private BitmapFont font;
+    private final float gameHeight;
+    private final float gameWidth;
+    private final Stage stage;
     private Question question;
     private TextArea taPhrase;
-
     private TextButton btnAnswer1;
     private TextButton btnAnswer2;
     private TextButton btnAnswer3;
     private TextButton btnAnswer4;
-
     private TextButton btnMenu;
     private TextButton btnScore;
     private TextButton btnRetry;
-
     private ProgressBar timeBar;
-
-    private ShapeRenderer shapeRenderer;
-//    private SpriteBatch batch;
-//    private BitmapFont font;
-    private float gameHeight;
-    private float gameWidth;
-
-    private Stage stage;
 
     public FTGRenderer(FTGWorld world, float gameWidth, float gameHeight){
         this.myFtgWorld = world;

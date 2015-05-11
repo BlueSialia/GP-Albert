@@ -5,12 +5,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.actions.DelayAction;
 import com.badlogic.gdx.scenes.scene2d.ui.ProgressBar;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
@@ -18,69 +16,51 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Timer;
+import com.gp_group.albert.AlbertGame;
 import com.gp_group.albert.helpers.ParserLibGDX;
 import com.gp_group.albert.helpers.QuestionsStack;
-import com.gp_group.albert.helpers.XMLParser;
 import com.gp_group.albert.objects.Question;
 
 /**
  * Created by ander on 18/02/15.
  * email: ancalotoru@gmail.com
  */
-public class FTGWorld {
+class FTGWorld {
+    private final TextArea taPhrase;
+    private final TextButton btnAnswer1;
+    private final TextButton btnAnswer2;
+    private final TextButton btnAnswer3;
+    private final TextButton btnAnswer4;
+    private final ProgressBar timeBar;
+    private final TextButton btnScore;
+    private final TextButton btnMenu;
+    private final TextButton btnRetry;
+    private final float screenWidth;
+    private final float screenHeight;
+    private final Skin skinPhrase;
+    private final Skin skinRest;
+    private final Skin skinProgressBar;
+    private final int TIME_LIMIT = 20 * 1000;
+    private final SpriteBatch batch;
+    private final BitmapFont yourBitmapFontName;
     private Question question;
-    private TextArea taPhrase;
-
-//    private TextField tfAnswer1;
-//    private TextField tfAnswer2;
-//    private TextField tfAnswer3;
-//    private TextField tfAnswer4;
-
-    private TextButton btnAnswer1;
-    private TextButton btnAnswer2;
-    private TextButton btnAnswer3;
-    private TextButton btnAnswer4;
-
-//    private TextButton btnNext;
-
-    private ProgressBar timeBar;
-
-    private TextButton btnScore;
-    private TextButton btnMenu;
-    private TextButton btnRetry;
-
-    private float screenWidth;
-    private float screenHeight;
-    //Helpers to Text*
-    private Skin skinPhrase;
-
-    private Skin skinRest;
-    private Skin skinProgressBar;
     //TODO: private Option option;
     //TODO: private Score score;
     private long time_start;
-    private int TIME_LIMIT = 20*1000;
     private boolean startQuestion;
-
     private Timer.Task timer;
-
     private long playTime;
-
     private boolean checkedAnswer;
     private boolean btn1touch;
     private boolean btn2touch;
     private boolean btn3touch;
     private boolean btn4touch;
-
     private boolean isCheckingAnswer;
-
     private int score = 0;
     private String yourScoreName;
-    private SpriteBatch batch;
-    private BitmapFont yourBitmapFontName;
 
 
-    public FTGWorld(float pScreenWidth, float pScreenHeight){
+    public FTGWorld(final AlbertGame game, float pScreenWidth, float pScreenHeight) {
 //        XMLParser.getXMLParser().parseXmlFile("questions_ftg.xml");
         ParserLibGDX.getParserLibGDX().parseFile();
         QuestionsStack.getQuestionsStack().chooseQuestions();
@@ -215,7 +195,7 @@ public class FTGWorld {
         btnMenu.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                //TODO Si se clica que vaya al MENU
+                game.setMainScreen();
             }
         });
 
@@ -296,7 +276,7 @@ public class FTGWorld {
         timeBar.setVisible(true);
     }
 
-    public void loadQuestion(){
+    void loadQuestion() {
         question = QuestionsStack.getQuestionsStack().loadQuestion();
         if (question == null){
             btnScore.setText(yourScoreName);
@@ -315,7 +295,7 @@ public class FTGWorld {
         time_start = System.currentTimeMillis();
     }
 
-    public void configButtons(){
+    void configButtons() {
         float xArea = screenWidth/12;
         float yArea = (screenHeight/2)+((screenHeight/2)/3);
         float xField = screenWidth/5;

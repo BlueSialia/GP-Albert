@@ -11,7 +11,7 @@ import com.gp_group.albert.helpers.InputHandler;
 public class LetrisScreen implements Screen {
 
     private final LetrisWorld world;
-    private LetrisRenderer renderer;
+    private final LetrisRenderer renderer;
     private float runtime=0;
 
     /**

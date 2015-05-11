@@ -16,7 +16,7 @@ import com.gp_group.albert.objects.ui.SpriteAccessor;
  */
 public class MainSplash implements Screen {
 
-    private AlbertGame game;
+    private final AlbertGame game;
     private TweenManager manager;
     private SpriteBatch batcher;
     private Sprite sprite;

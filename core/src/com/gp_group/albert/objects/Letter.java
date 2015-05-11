@@ -22,14 +22,14 @@ public class Letter {
     private final Vector2 velocity;
     private final Vector2 maxVelocity;
     private final Vector2 acceleration;
-    private float gameWidth = Gdx.graphics.getWidth();
-    private float gameHeight = Gdx.graphics.getHeight();
-    private char letra;
+    private final float gameWidth = Gdx.graphics.getWidth();
+    private final float gameHeight = Gdx.graphics.getHeight();
+    private final char letra;
 
     private final Rectangle boundingRectangle;
+    private final TextButton boton;
     private boolean isPressed = false;
     private boolean isSelected = false;
-    private TextButton boton;
 
     public Letter(float side, float x, float y, float gravity, float maxSpeed, Skin skin) {
         Gdx.app.log("Letter", "created");

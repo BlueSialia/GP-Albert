@@ -16,7 +16,9 @@ import java.io.IOException;
 public class AssetLoader {
 
     private static Texture texture; //General texture for all the proyect
-    public static TextureRegion letrisOk, letrisBorrar, letrisAtras;
+    private static TextureRegion letrisOk;
+    private static TextureRegion letrisBorrar;
+    private static TextureRegion letrisAtras;
     private static Dictionary _dictionary_;
     private static Texture logo;
     private static Skin buttonSkin;
@@ -73,7 +75,7 @@ public class AssetLoader {
         return letrisOk;
     }
 
-    public void loadDictionary(String language) throws IOException {
+    private static void loadDictionary(String language) throws IOException {
         _dictionary_ = new Dictionary(Gdx.files.internal("dictionary/" + language + ".dic"));
     }
 }

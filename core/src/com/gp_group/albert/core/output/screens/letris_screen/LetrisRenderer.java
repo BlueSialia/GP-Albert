@@ -13,14 +13,15 @@ import com.gp_group.albert.objects.Letter;
 import java.util.List;
 
 
-public class LetrisRenderer {
-    private LetrisWorld myLetrisWorld;
-    private OrthographicCamera cam;
-    private ShapeRenderer shapeRenderer;
-    private float gameHeight, gameWidth;
-    private SpriteBatch batcher;
-    float runtime=0;
-    private Stage stage;
+class LetrisRenderer {
+    private final LetrisWorld myLetrisWorld;
+    private final OrthographicCamera cam;
+    private final ShapeRenderer shapeRenderer;
+    private final float gameHeight;
+    private final float gameWidth;
+    private final SpriteBatch batcher;
+    private final Stage stage;
+    private float runtime = 0;
 
     public LetrisRenderer(LetrisWorld world, float gameWidth, float gameHeight){
         this.myLetrisWorld = world;
@@ -87,7 +88,8 @@ public class LetrisRenderer {
         stage.draw();
 
     }
-    public void borrarLetras(){
+
+    void borrarLetras() {
         stage.clear();
     }
 }
