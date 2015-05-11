@@ -32,10 +32,9 @@ public class AlbertGame extends Game {
         AssetLoader.load();
         splash = new MainSplash(this);
         main = new MainScreen(this);
-        letris = new LetrisScreen();
         fillthegaps = new FTGScreen(this);
         multiplayer = new MultiplayerScreen();
-        setMainSplash();
+        setMainScreen();
     }
 
     /**
@@ -59,6 +58,7 @@ public class AlbertGame extends Game {
      */
     public void setLetrisScreen() {
         Gdx.app.log("AlbertGame", "letris screen active");
+        letris = new LetrisScreen();
         setScreen(letris);
     }
 
