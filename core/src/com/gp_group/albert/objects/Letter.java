@@ -56,7 +56,7 @@ public class Letter {
      * @param floor  Height of the position of the floor.
      */
     public void update(float delta, List<Letter> column, float floor) {
-        Gdx.app.log("Letter", "updated");
+//        Gdx.app.log("Letter", "updated");
         updateVelocity(delta);
         updatePosition(delta, column, floor);
     }
@@ -69,7 +69,7 @@ public class Letter {
      * @param floor  Height of the position of the floor.
      */
     private void updatePosition(float delta, List<Letter> column, float floor) {
-        Gdx.app.log("Letter", "position updated");
+//        Gdx.app.log("Letter", "position updated");
         if (column.indexOf(this) == 0) {
             position.y -= velocity.y * delta;
             if (position.y < gameHeight-floor) {
@@ -90,7 +90,7 @@ public class Letter {
      * @param delta
      */
     private void updateVelocity(float delta) {
-        Gdx.app.log("Letter", "velocity updated");
+//        Gdx.app.log("Letter", "velocity updated");
         velocity.y += acceleration.y * delta;
         if (velocity.y > maxVelocity.y) {
             velocity.y = maxVelocity.y;

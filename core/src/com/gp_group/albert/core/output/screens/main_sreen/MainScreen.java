@@ -19,16 +19,16 @@ import com.gp_group.albert.AlbertGame;
  */
 public class MainScreen implements Screen {
 
-    private final Stage stage;
-    private final Table table;
-    private final AlbertGame game;
-    private final Label title;
-    private final Skin skin;
-    private final TextButton buttonFill;
-    private final TextButton buttonLetris;
-    private final TextButton buttonDict;
-    private final int screenWidth;
-    private final int screenHeight;
+    private Stage stage;
+    private Table table;
+    private AlbertGame game;
+    private Label title;
+    private Skin skin;
+    private TextButton buttonFill;
+    private TextButton buttonLetris;
+    private TextButton buttonDict;
+    private int screenWidth;
+    private int screenHeight;
     private float runtime;
 
     /**
@@ -123,6 +123,44 @@ public class MainScreen implements Screen {
     @Override
     public void resume() {
         Gdx.app.log("MainScreen", "resumed");
+        stage = new Stage();
+        table = new Table();
+        skin = new Skin(Gdx.files.internal("uiskin.json"), new TextureAtlas(Gdx.files.internal("uiskin.atlas")));
+        skin.getFont("default-font").setScale(3);
+        buttonFill = new TextButton("Play FillTheGaps", skin);
+        buttonLetris = new TextButton("Play Letris", skin);
+        buttonDict = new TextButton("Select Language", skin);
+        title = new Label("Albert", skin);
+
+        buttonFill.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.setFillTheGapsScreen();
+            }
+        });
+        buttonLetris.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.setLetrisScreen();
+            }
+        });
+        buttonDict.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                //TODO
+            }
+        });
+
+        table.add(title).padBottom(40).row();
+        table.add(buttonFill).size(screenWidth / 3, screenWidth / 10).padBottom(screenWidth / 30).row();
+        table.add(buttonLetris).size(screenWidth / 3, screenWidth / 10).padBottom(screenWidth / 30).row();
+        table.add(buttonDict).size(screenWidth / 3, screenWidth / 10).padBottom(screenWidth / 30).row();
+
+        table.setFillParent(true);
+        stage.addActor(table);
+
+        Gdx.input.setInputProcessor(stage);
+
     }
 
     /**
@@ -131,6 +169,8 @@ public class MainScreen implements Screen {
     @Override
     public void hide() {
         Gdx.app.log("MainScreen", "hided");
+        stage.dispose();
+        skin.dispose();
     }
 
     /**

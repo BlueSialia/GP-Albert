@@ -9,13 +9,12 @@ import java.util.Collections;
  * Created by ac4r_g0 on 07/05/2015.
  */
 public class QuestionsStack {
-    private final int QUESTION_NUMBER_PER_GAME = 9;
     private static final QuestionsStack mQuestionsStack = new QuestionsStack();
+    private static int numQuestion;
+    private final int QUESTION_NUMBER_PER_GAME = 9;
     private final ArrayList<Question> lQuestions;
     private final int[] questions; //choose probabilistically
     private final boolean[] memo;
-    private final boolean[] memo;
-    private static int numQuestion;
 
     private QuestionsStack() {
 

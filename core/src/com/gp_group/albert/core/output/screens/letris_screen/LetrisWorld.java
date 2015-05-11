@@ -25,6 +25,7 @@ public class LetrisWorld {
     private final Skin skinRest;
     private final TextArea palabra;
     private float timer;
+    private boolean gameOver;
 
     /**
      * Creates a LetrisWorld instance.
@@ -41,6 +42,7 @@ public class LetrisWorld {
         this.period = period;
         this.gravity = gravity;
         this.maxSpeed = maxSpeed;
+        this.gameOver = false;
         this.lettersSize = calculateSizeOfLetters();
         this.letters = (List<Letter>[]) new List<?>[(int) (worldWidth / lettersSize)]; //FIXME: Unchecked cast
         for (int i = 0; i < this.letters.length; i++) {
@@ -66,25 +68,27 @@ public class LetrisWorld {
      * @param delta
      */
     public void update(float delta) {
-        Gdx.app.log("LetrisWorld", "updated");
-        timer += delta;
-        if (timer > period) {
-            timer -= period;
-            createLetter();
-        }
-
-        for (List<Letter> list : letters) {
-            for (Letter l : list) {
-                l.update(delta, list, worldHeight*0.12f+worldHeight*0.75f);
+        if (!gameOver) {
+            Gdx.app.log("LetrisWorld", "updated");
+            timer += delta;
+            if (timer > period) {
+                timer -= period;
+                createLetter();
             }
-        }
-        palabra.setText(getSelectedLetters().getPalabra());
 
-        palabra.setWidth(Gdx.graphics.getWidth() / 2);
-        palabra.setHeight(worldHeight*0.08f);
-        this.palabra.setX((Gdx.graphics.getWidth() - Gdx.graphics.getWidth() / 2) / 2);
-        this.palabra.setY(10);
-        palabra.setDisabled(true);
+            for (List<Letter> list : letters) {
+                for (Letter l : list) {
+                    l.update(delta, list, worldHeight * 0.12f + worldHeight * 0.75f);
+                }
+            }
+            palabra.setText(getSelectedLetters().getPalabra());
+
+            palabra.setWidth(Gdx.graphics.getWidth() / 2);
+            palabra.setHeight(worldHeight * 0.08f);
+            this.palabra.setX((Gdx.graphics.getWidth() - Gdx.graphics.getWidth() / 2) / 2);
+            this.palabra.setY(10);
+            palabra.setDisabled(true);
+        }
     }
 
     /**
@@ -108,8 +112,9 @@ public class LetrisWorld {
     public TextArea getPalabra(){
         return palabra;
     }
+
     public void gameOver(){
-        //TODO Ha perdido. Mostrar puntuacion, etc
-        Gdx.app.log("wefwegewgegergerger---","Limite den letras. GAME OVER");
+        Gdx.app.log("LetrisWorld", "Limite de letras. GAME OVER");
+        gameOver = true;
     }
 }
