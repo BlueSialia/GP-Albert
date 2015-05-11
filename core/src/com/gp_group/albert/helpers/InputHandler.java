@@ -1,16 +1,23 @@
 package com.gp_group.albert.helpers;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.math.Rectangle;
 import com.gp_group.albert.core.output.screens.letris_screen.LetrisWorld;
 import com.gp_group.albert.objects.Letter;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class InputHandler implements InputProcessor {
     private LetrisWorld world;
+    private float gameWidth = Gdx.graphics.getWidth();
+    private float gameHeight = Gdx.graphics.getHeight();
+    private Rectangle botonOk;
 
     public InputHandler(LetrisWorld world) {
         this.world = world;
+        botonOk = new Rectangle(gameWidth-gameWidth/5,gameHeight-gameHeight*0.10f,gameWidth/7,gameWidth/7);
     }
 
     @Override
@@ -30,9 +37,24 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        if(botonOk.contains(screenX,screenY)){
+            Gdx.app.log("ggljkadfslkfadsnkladfsadvs",world.getPalabra().getText());
+            if(AssetLoader.getDiccionario().exist(world.getPalabra().getText())){
+                //TODO sumar puntuacion
+                Iterator<Letter> itr = world.getSelectedLetters().getIterador();
+                while(itr.hasNext()){
+                    Letter letra=itr.next();
+                    for(int i=0; i<world.getLetters().length;i++){
+                        if(world.getLetters()[i].contains(letra))
+                        world.getLetters()[i].remove(letra);
+                    }
+                }
+                world.getSelectedLetters().reiniciar();
+            }
+        }
         for (List<Letter> list : world.getLetters()) {
             for (Letter l : list) {
-                l.isTouchDown(screenX, screenY);
+                l.isTouchDown(screenX-gameWidth*0.07f, gameHeight-screenY);
             }
         }
         return true;
@@ -42,7 +64,7 @@ public class InputHandler implements InputProcessor {
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         for (List<Letter> list : world.getLetters()) {
             for (Letter l : list) {
-                l.isTouchUp(screenX, screenY, world);
+                l.isTouchUp(screenX-gameWidth*0.07f, gameHeight-screenY, world);
             }
         }
         return true;

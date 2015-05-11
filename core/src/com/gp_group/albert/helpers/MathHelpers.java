@@ -34,7 +34,14 @@ public class MathHelpers {
             int relation = min / (fraction.getNumerator() * fraction.getDenominator()) + 1;
             fraction = new Fraction(1, fraction.getDenominator() * relation);
         }
-        return fraction.getDenominator();
+        int quantity=fraction.getDenominator();
+        int i=1;
+        while(quantity*fraction.getNumerator()/i > max){
+            quantity = fraction.getDenominator()/i;
+            i++;
+
+        }
+        return quantity;
     }
 
     /**
@@ -53,5 +60,9 @@ public class MathHelpers {
         }
         if (iterator.hasPrevious()) fraction = fraction.add(iterator.previous());
         return fraction;
+    }
+
+    public static int GCD(int a, int b) {
+        return b == 0 ? a : GCD(b, a % b);
     }
 }

@@ -14,13 +14,15 @@ import java.io.IOException;
 public class AssetLoader {
 
     private static Texture texture; //General texture for all the proyect
-    public static TextureRegion letrisOk, letrisBorrar, letrisAtras;
+    private static TextureRegion letrisOk;
+    private static TextureRegion letrisBorrar;
+
+    private static TextureRegion letrisAtras;
     private static Dictionary _dictionary_;
 
     public static void load(){
         //TODO necesitamos los pixels para hacer este apartado.
 
-//        texture = new Texture(Gdx.files.internal("/android/assets/textureAlbert.png"));
         texture = new Texture(Gdx.files.internal("textureAlbert.png"));
         texture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
 
@@ -32,6 +34,12 @@ public class AssetLoader {
 
         letrisAtras = new TextureRegion(texture, 35, 535, 350, 510); //x, y, width, height
         letrisAtras.flip(false, true);
+
+        try {
+            loadDictionary("en_UK");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -39,7 +47,23 @@ public class AssetLoader {
         texture.dispose();
     }
 
-    public void loadDictionary(String language) throws IOException {
+    public static void loadDictionary(String language) throws IOException {
         _dictionary_ = new Dictionary(Gdx.files.internal("dictionary/" + language + ".dic"));
+    }
+
+    public static Dictionary getDiccionario() {
+        return _dictionary_;
+    }
+
+    public static TextureRegion getLetrisAtras() {
+        return letrisAtras;
+    }
+
+    public static TextureRegion getLetrisBorrar() {
+        return letrisBorrar;
+    }
+
+    public static TextureRegion getLetrisOk() {
+        return letrisOk;
     }
 }

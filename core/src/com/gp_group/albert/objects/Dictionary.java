@@ -1,5 +1,6 @@
 package com.gp_group.albert.objects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.files.FileHandle;
 import org.apache.commons.collections4.trie.PatriciaTrie;
 
@@ -24,6 +25,8 @@ public class Dictionary {
     }
 
     public boolean exist(String word) {
-        return _dictionary_.containsKey(word);
+        boolean a=_dictionary_.containsKey(word.toLowerCase());
+        Gdx.app.log("ggljkadfslkfadsnkladfsadvs********",a+"");
+        return a;
     }
 }

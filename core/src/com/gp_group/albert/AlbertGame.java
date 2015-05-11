@@ -35,6 +35,8 @@ public class AlbertGame extends Game {
         fillthegaps = new FTGScreen();
         multiplayer = new MultiplayerScreen();
         AssetLoader.load();
+        //setMainSplash();
+        //setFillTheGapsScreen();
         setLetrisScreen();
     }
 

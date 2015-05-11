@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.gp_group.albert.helpers.AssetLoader;
 import com.gp_group.albert.objects.Letter;
 
@@ -16,29 +17,27 @@ public class LetrisRenderer {
     private LetrisWorld myLetrisWorld;
     private OrthographicCamera cam;
     private ShapeRenderer shapeRenderer;
-    private int gameHeight, gameWidth;
+    private float gameHeight, gameWidth;
     private SpriteBatch batcher;
     float runtime=0;
+    private Stage stage;
 
-    public LetrisRenderer(LetrisWorld world, int gameWidth, int gameHeight){
+    public LetrisRenderer(LetrisWorld world, float gameWidth, float gameHeight){
         this.myLetrisWorld = world;
         this.gameHeight=gameHeight;
         this.gameWidth=gameWidth;
 
         cam = new OrthographicCamera();
-        cam.setToOrtho(true, 136, this.gameHeight);
+        cam.setToOrtho(true, gameWidth, this.gameHeight);
         batcher = new SpriteBatch();
         batcher.setProjectionMatrix(cam.combined);
         shapeRenderer = new ShapeRenderer();
         shapeRenderer.setProjectionMatrix(cam.combined);
-
-        // Call helper methods to initialize instance variables
-        initGameObjects();
-        initAssets();
+        stage = new Stage();
     }
 
     public void render(float delta){
-        Gdx.app.log("LetrisRenderer", "render");
+        //Gdx.app.log("LetrisRenderer", "render");
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -47,17 +46,17 @@ public class LetrisRenderer {
         // Begin ShapeRenderer
         shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
-        // Draw Background color
-        shapeRenderer.setColor(Color.valueOf("ff8000"));
-        shapeRenderer.rect(0, 0, 136, (gameHeight / 2) + 66);
-
-        // Draw Grass
+        // Draw Background
         shapeRenderer.setColor(Color.valueOf("ffaa55"));
-        shapeRenderer.rect(0, (gameHeight/2) + 66, 136, 11);
+        //shapeRenderer.rect(0, 0, 136, (gameHeight / 2) + 66);
+        shapeRenderer.rect(0, 0, gameWidth, gameHeight);
+        // Draw Header
+        shapeRenderer.setColor(Color.valueOf("ff8000"));
+        shapeRenderer.rect(0, 0, gameWidth, gameHeight * 0.10f);
 
-        // Draw Dirt
+        // Draw Container
         shapeRenderer.setColor(Color.valueOf("ffc68d"));
-        shapeRenderer.rect(0, (gameHeight/2) + 77, 136, 52);
+        shapeRenderer.rect(gameWidth*0.07f, gameHeight*0.12f, gameWidth*0.86f, gameHeight*0.75f);
 
         // End ShapeRenderer
         shapeRenderer.end();
@@ -69,44 +68,26 @@ public class LetrisRenderer {
         // transparency.
         batcher.enableBlending();
 
+        batcher.draw(AssetLoader.getLetrisOk(), gameWidth-gameWidth/5,gameHeight-gameHeight*0.10f,gameWidth/7,gameWidth/7);
+        // End SpriteBatch
+        batcher.end();
+        borrarLetras();
+
         List<Letter>[] letters = myLetrisWorld.getLetters();
         for (List<Letter> list : letters) {
             for (Letter l : list) {
-                batcher.draw(AssetLoader.letrisOk, l.getBoundingRectangle().getX(), l.getBoundingRectangle().getY(), l.getBoundingRectangle().getWidth(), l.getBoundingRectangle().getHeight());
+                if(list.size()>(int)(gameHeight-gameHeight*0.12f)/l.getBoundingRectangle().getHeight()) myLetrisWorld.gameOver();
+                if(l.isSelected()) l.getBoton().setColor(Color.GREEN);
+                else l.getBoton().setColor(Color.BLACK);
+                if(!stage.getActors().contains(l.getBoton(), true)) stage.addActor(l.getBoton());
+                //stage.addActor(l.getBoton());
             }
         }
+        stage.addActor(myLetrisWorld.getPalabra());
+        stage.draw();
 
-        // End SpriteBatch
-        batcher.end();
     }
-
-    private void initGameObjects() {
-//        bird = myWorld.getBird();
-//        scroller = myWorld.getScroller();
-//        frontGrass = scroller.getFrontGrass();
-//        backGrass = scroller.getBackGrass();
-//        pipe1 = scroller.getPipe1();
-//        pipe2 = scroller.getPipe2();
-//        pipe3 = scroller.getPipe3();
-    }
-
-    private void initAssets() {
-//        bg = AssetLoader.bg;
-//        grass = AssetLoader.grass;
-//        birdAnimation = AssetLoader.birdAnimation;
-//        birdMid = AssetLoader.bird;
-//        birdDown = AssetLoader.birdDown;
-//        birdUp = AssetLoader.birdUp;
-//        skullUp = AssetLoader.skullUp;
-//        skullDown = AssetLoader.skullDown;
-//        bar = AssetLoader.bar;
-    }
-
-    private void drawGrass() {
-        // Draw the grass
-//        batcher.draw(grass, frontGrass.getX(), frontGrass.getY(),
-//                frontGrass.getWidth(), frontGrass.getHeight());
-//        batcher.draw(grass, backGrass.getX(), backGrass.getY(),
-//                backGrass.getWidth(), backGrass.getHeight());
+    public void borrarLetras(){
+        stage.clear();
     }
 }
