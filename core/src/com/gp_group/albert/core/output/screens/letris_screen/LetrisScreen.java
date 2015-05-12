@@ -2,6 +2,7 @@ package com.gp_group.albert.core.output.screens.letris_screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.gp_group.albert.AlbertGame;
 import com.gp_group.albert.helpers.InputHandler;
 
 /**
@@ -17,13 +18,13 @@ public class LetrisScreen implements Screen {
     /**
      * Creates a LetrisScreen instance.
      */
-    public LetrisScreen() {
+    public LetrisScreen(AlbertGame game) {
         Gdx.app.log("LetrisScreen", "created");
         float screenWidth = Gdx.graphics.getWidth();
         float screenHeight = Gdx.graphics.getHeight();
         Gdx.app.log("H",""+screenHeight);
         Gdx.app.log("W",""+screenWidth);
-        this.world = new LetrisWorld(screenWidth, screenHeight, 1, 100, 500);//FIXME: reduce dimension for the rest of UI (buttons...), because the size of the world is not the full screen. And find the correct period, gravity and maxSpeed.
+        this.world = new LetrisWorld(game, screenWidth, screenHeight, 1, 100, 500);//FIXME: reduce dimension for the rest of UI (buttons...), because the size of the world is not the full screen. And find the correct period, gravity and maxSpeed.
         renderer = new LetrisRenderer(world, screenWidth, screenHeight); // initialize renderer
 
         Gdx.input.setInputProcessor(new InputHandler(world));

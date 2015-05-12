@@ -3,6 +3,7 @@ package com.gp_group.albert.core.output.screens.letris_screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
+import com.gp_group.albert.AlbertGame;
 import com.gp_group.albert.helpers.MathHelpers;
 import com.gp_group.albert.objects.Letter;
 import com.gp_group.albert.objects.SelectedLetters;
@@ -24,6 +25,7 @@ public class LetrisWorld {
     private final SelectedLetters selectedLetters;
     private final Skin skinRest;
     private final TextArea palabra;
+    private final AlbertGame game;
     private float timer;
     private boolean gameOver;
 
@@ -34,8 +36,9 @@ public class LetrisWorld {
      * @param height
      * @param period time in seconds between the creations of letters.
      */
-    public LetrisWorld(float width, float height, float period, float gravity, float maxSpeed) {
+    public LetrisWorld(AlbertGame game, float width, float height, float period, float gravity, float maxSpeed) {
         Gdx.app.log("LetrisWorld", "created");
+        this.game = game;
         this.worldWidth = width*0.86f;
         selectedLetters = new SelectedLetters();
         this.worldHeight = height;
@@ -88,6 +91,8 @@ public class LetrisWorld {
             this.palabra.setX((Gdx.graphics.getWidth() - Gdx.graphics.getWidth() / 2) / 2);
             this.palabra.setY(10);
             palabra.setDisabled(true);
+        } else {
+            game.setMainScreen();
         }
     }
 
